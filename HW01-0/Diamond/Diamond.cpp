@@ -1,3 +1,9 @@
+/*
+Author Ty Jacobs
+Diamond
+*/
+
+
 # include <iostream>
 
 int main() {
