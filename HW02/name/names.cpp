@@ -12,10 +12,22 @@
 # include <algorithm>
 
 int main() {
+	std::string rname = "sam";
 
+	// adds 10 names in to a vector
 	std::vector<std::string> names;
 	InputNames(names);
 	std::cout << std::endl;
+
+
+	// prints if the name realy exist in the vector
+	if (DoesNameExist(rname, names) == true) {
+		std::cout << rname << " Does exist in the list of names" << std::endl;
+	}
+	else {
+		std::cout << rname << " Does not exist in the list of names" << std::endl;
+	}
+
 
 	return 0;
 }
