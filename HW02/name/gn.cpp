@@ -26,6 +26,12 @@ void InputNames(std::vector<std::string> & names) {
 
 // code where the user enters a name looking to find a name in the vector
 bool DoesNameExist(const std::string& nameToFind, const std::vector<std::string>& names) {
-	return false;
+	bool iftrue = false;
+	for (int i = 0; i < 10; i++) {
+		if (nameToFind == names[i]) {
+			iftrue = true;
+		}
+	}
+	return iftrue;
 }
 
