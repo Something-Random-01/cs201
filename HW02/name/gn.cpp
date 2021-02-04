@@ -35,3 +35,10 @@ bool DoesNameExist(const std::string& nameToFind, const std::vector<std::string>
 	return iftrue;
 }
 
+// prints all of the names
+void PrintNames(const std::vector<std::string>& names) {
+	for (int i = 0; i < 10; i++) {
+		std::cout << names[i] << std::endl;
+	}
+}
+
