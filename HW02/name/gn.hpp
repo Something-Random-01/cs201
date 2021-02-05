@@ -21,4 +21,7 @@ bool DoesNameExist(const std::string & nameToFind, const std::vector<std::string
 // prints all of the names
 void PrintNames(const std::vector<std::string>& names);
 
+// gets the length of the string
+void length(std::vector<std::string>& names);
+
 #endif

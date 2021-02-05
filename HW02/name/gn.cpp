@@ -42,3 +42,14 @@ void PrintNames(const std::vector<std::string>& names) {
 	}
 }
 
+// counts how many characters are in each string
+void length(std::vector<std::string>& names) {
+	int total = 0;
+	for (int i = 0; i < 10; i++) {
+		int len = names[i].size();
+		std::cout << "Length of " << names[i] << " is " << len << std::endl;
+		total += len;
+	}
+	std::cout << "The total characters in all 10 names are: " << total << std::endl;
+}
+

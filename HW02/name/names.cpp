@@ -27,6 +27,9 @@ int main() {
 	else {
 		std::cout << rname << " Does not exist in the list of names" << std::endl;
 	}
+	std::cout << std::endl;
+
+	length(names);
 
 	std::cout << std::endl;
 	// prints all of the names
