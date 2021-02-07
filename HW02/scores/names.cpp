@@ -38,9 +38,14 @@ void getNames(std::vector<std::string>& names, std::vector<int>& score) {
 bool dupName(std::vector<std::string>& names) {
 	// variable to keep track if its true
 	bool ift = false;
+	int count = 0;
 	for (int i = 1; i < names.size(); i++) {
-		for (int j = 0; j < names.size() -1; j++) {
+		count = 0;
+		for (int j = 0; j < names.size(); j++) {
 			if (names[i] == names[j]) {
+				count++;
+			}
+			if (count >= 2) {
 				ift = true;
 			}
 		}
