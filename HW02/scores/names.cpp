@@ -16,16 +16,21 @@ void getNames(std::vector<std::string>& names, std::vector<int>& score) {
 	// keeps tracks of the number of loops
 	int i = 0;
 	// logs the name
-	std::string name;
 	// score that was entered in
-	int sc = 0;
-	while (true) {
+	int sc = -1;
+	int crash = 0;
+	std::string name = "";
+	while (name != "NoName" && sc != 0) {
 		std::cout << "Please enter a name and score (enter NoName 0 to exit) ";
 		std::cin >> name;
 		std::cin >> sc;
 		names.push_back(name);
 		score.push_back(sc);
-		if (name == "NoName" && sc == 0) {
+		crash++;
+		if (crash > 10000) {
+			std::cout << std::endl;
+			std::cout << "DID NOT PUT IN A NUMBER" << std::endl;
+			std::cout << std::endl;
 			break;
 		}
 	}
@@ -94,9 +99,9 @@ void ifscore(vector<string>& names, vector<int>& score) {
 	int scored;
 	std::cout << "Please enter a score to look for: ";
 	std::cin >> scored;
-
+	// a way to crash the program when it passed 10,000
+	// This is my way since I dout people will enter in 10 users in one go.
 	// finds the score and print out the name and score for each person
-
 		for (int i = 0; i < score.size(); i++) {
 			if (scored == score[i]) {
 				std::cout << names[i] << " " << score[i] << std::endl;
@@ -111,6 +116,9 @@ void ifscore(vector<string>& names, vector<int>& score) {
 // gets a 1,2,3,4, -1
 void wloop(vector<string>& names, vector<int>& score) {
 	int num = 0;
+
+	// looking for a pleas to crash the program
+	int crash = 0;
 	while (num != -1) {
 		std::cout << "Enter 1 to add names and scores, Enter 2 to print Names and scores" << std::endl;
 		std::cout << "Enter 3 to look for a Name, Enter 4 to look for a score" << std::endl;
@@ -137,8 +145,13 @@ void wloop(vector<string>& names, vector<int>& score) {
 				std::cout << std::endl;
 			}
 			if (num == 4) {
+				crash++;
 				ifscore(names, score);
 				std::cout << std::endl;
+				if (crash > 10000) {
+					std::cout << "DID NOT ENTER A NUMBER" << std::endl;
+					break;
+				}
 
 			}
 		}
