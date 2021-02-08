@@ -122,6 +122,7 @@ void wloop(vector<string>& names, vector<int>& score) {
 	while (num != -1) {
 		std::cout << "Enter 1 to add names and scores, Enter 2 to print Names and scores" << std::endl;
 		std::cout << "Enter 3 to look for a Name, Enter 4 to look for a score" << std::endl;
+		std::cout << "The program will last for 10,000 entries if you enter number 4" << std::endl;
 		std::cout << "Enter -1 to exit: ";
 		std::cin >> num;
 		if (!num) {
