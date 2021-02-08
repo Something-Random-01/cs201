@@ -31,7 +31,6 @@ void getNames(std::vector<std::string>& names, std::vector<int>& score) {
 	}
 	names.pop_back();
 	score.pop_back();
-
 }
 
 // finds if there is two names
@@ -87,8 +86,27 @@ void ifName(vector<string>& names, vector<int>& score) {
 	}
 }
 
+// search for a score to find the names
+void ifscore(vector<string>& names, vector<int>& score) {
+	// set varible and finds the score to get
+	// to let program know if user found a score
+	bool th = false;
+	int scored;
+	std::cout << "Please enter a score to look for: ";
+	std::cin >> scored;
 
+	// finds the score and print out the name and score for each person
 
+		for (int i = 0; i < score.size(); i++) {
+			if (scored == score[i]) {
+				std::cout << names[i] << " " << score[i] << std::endl;
+				th = true;
+			}
+		}
+		if (!th) {
+			std::cout << "score not found" << std::endl;
+		}
+	}
 
 // gets a 1,2,3,4, -1
 void wloop(vector<string>& names, vector<int>& score) {
@@ -119,6 +137,7 @@ void wloop(vector<string>& names, vector<int>& score) {
 				std::cout << std::endl;
 			}
 			if (num == 4) {
+				ifscore(names, score);
 				std::cout << std::endl;
 
 			}

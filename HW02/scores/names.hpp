@@ -21,6 +21,7 @@ bool dupName(vector<string>& names);
 void printAll(vector<string>& names, vector<int>& score);
 void wloop(vector<string>& names, vector<int>& score);
 void ifName(vector<string>& names, vector<int>& score);
+void ifscore(vector<string>& names, vector<int>& score);
 
 
 #endif // !names_HPP
