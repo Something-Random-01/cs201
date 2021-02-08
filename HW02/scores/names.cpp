@@ -61,3 +61,30 @@ void printAll(vector<string>& names, vector<int>& score) {
 	}
 	std::cout << std::endl;
 }
+
+
+// gets a 1,2,3,4, -1
+void wloop(vector<string>& names, vector<int>& score) {
+	int num = 0;
+	while (num != -1) {
+		std::cout << "Enter 1 to add names and scores, Enter 2 to print Names and scores" << std::endl;
+		std::cout << "Enter -1 to exit: ";
+		std::cin >> num;
+		if (!num) {
+			std::cout << "Not a number" << std::endl;
+			break;
+		}
+		else {
+			if (num == 1) {
+				getNames(names, score);
+				if (dupName(names)) {
+					std::cout << "Error: two names entered" << std::endl;;
+					break;
+				}
+			}
+			if (num == 2) {
+				printAll(names, score);
+			}
+		}
+	}
+}
