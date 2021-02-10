@@ -17,8 +17,10 @@ using std::string;
 
 //chech to see if nag. And a number
 int num();
-
-void printMid(string word, int len);
+// print the middle of the box
+void printMid(const string word,const int len);
+// print the top and bottom of the box
+void printBox(const string word,const  int len);
 
 #endif // !boxer_HPP
 

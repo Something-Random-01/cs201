@@ -19,7 +19,9 @@ int main() {
 
 	string word = "Hello!";
 	int number = num();
+	printBox(word, number);
 	printMid(word, number);
+	printBox(word, number);
 
 	return 0;
 }

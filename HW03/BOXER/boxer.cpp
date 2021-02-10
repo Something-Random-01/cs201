@@ -72,3 +72,12 @@ void printMid(const string word,const int len) {
 	}// end of the for loop
 	cout << endl;
 }// end of print mid
+
+void printBox(const string word, const  int len) {
+	for (int i = 0; i < len; i++) {
+		for (int j = 0; j < word.size() + 2 + len * 2; j++) {
+			cout << "*";
+		}
+		cout << endl;
+	}
+}
