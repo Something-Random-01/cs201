@@ -19,6 +19,10 @@ int num() {
 	int n = 0;// enter a number
 	cout << "Please enter a positive number: ";
 	std::cin >> n;
+	if (!n) {
+		cout << "HA, NOT AN INFINITY LOOP" << endl;
+		exit(-1);
+	}
 	cout << endl;
 	while (true) {// gets a positive number
 		if (n >= 0) {
