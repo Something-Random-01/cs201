@@ -6,4 +6,13 @@ boxer.hpp
 
 This program will get a string input and a positive number,
 Then it would print a box with the string in the middle
-*/#pragma once
+*/
+
+#pragma once
+#ifndef boxer_HPP
+#define boxer_HPP
+
+//chech to see if nag. And a number
+int num();
+#endif // !boxer_HPP
+
