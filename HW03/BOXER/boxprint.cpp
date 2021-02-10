@@ -31,10 +31,10 @@ int main() {
 	printFullBox(word, number);
 	cout << endl;
 
-	while (true) {
-		cout << "Do want to continue yes, or no: ";
+	while (true) {// to make a loop
+		cout << "Do want to continue yes, or no: ";// ask user if they want to do it again
 		cin >> exit;
-		if (exit == "yes") {
+		if (exit == "yes") {// does the box all ober again
 			int number = num();
 			cout << "please enter a word: ";
 			cin >> word;
@@ -43,10 +43,11 @@ int main() {
 			cout << endl;
 			continue;
 		}
-		if (exit == "no") {
+		if (exit == "no") {// exit the loop
 			cout << endl;
 			break;
-		}
+		}// tell the user to enter yes or no when they did not
+		// enter yes or no.
 		cout << "Enter yes or no, no to exit" << endl;
 	}
 
