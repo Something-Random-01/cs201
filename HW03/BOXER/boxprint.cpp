@@ -10,14 +10,16 @@ Then it would print a box with the string in the middle
 
 #include "boxer.hpp"
 #include <iostream>
+#include <string>
 using std::cout;
 using std::endl;
+using std::string;
 
 int main() {
+
+	string word = "Hello!";
 	int number = num();
-	cout << endl;
-	cout << number << endl;
-	cout << endl;
+	printMid(word, number);
 
 	return 0;
 }

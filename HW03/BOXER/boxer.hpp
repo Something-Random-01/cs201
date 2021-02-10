@@ -11,8 +11,14 @@ Then it would print a box with the string in the middle
 #pragma once
 #ifndef boxer_HPP
 #define boxer_HPP
+#include <string>
+using std::string;
+
 
 //chech to see if nag. And a number
 int num();
+
+void printMid(string word, int len);
+
 #endif // !boxer_HPP
 
