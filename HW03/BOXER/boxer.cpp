@@ -81,3 +81,9 @@ void printBox(const string word, const  int len) {
 		cout << endl;
 	}
 }
+
+void printFullBox(const string word, const int len) {
+	printBox(word, len);
+	printMid(word, len);
+	printBox(word, len);
+}

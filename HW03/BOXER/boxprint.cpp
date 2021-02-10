@@ -23,9 +23,6 @@ int main() {
 	cout << "please enter a word: ";
 	cin >> word;
 	cout << endl;
-	printBox(word, number);
-	printMid(word, number);
-	printBox(word, number);
-
+	printFullBox(word, number);
 	return 0;
 }

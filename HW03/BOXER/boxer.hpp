@@ -21,6 +21,8 @@ int num();
 void printMid(const string word,const int len);
 // print the top and bottom of the box
 void printBox(const string word,const  int len);
+// prints the full box
+void printFullBox(const string word, const int len);
 
 #endif // !boxer_HPP
 
