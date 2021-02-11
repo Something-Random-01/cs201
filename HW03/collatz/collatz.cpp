@@ -19,7 +19,7 @@ int main() {
 	cout << "Please enter a positive number: ";
 	while (true) {
 		cin >> k;
-		if (!k && k != 0) {
+		if (!k || k!= 0) {
 			cout << "you entered a letter or sometihng" << endl;
 			return -1;
 		}
