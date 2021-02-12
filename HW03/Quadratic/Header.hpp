@@ -13,6 +13,11 @@ it would work and it is a real root
 #ifndef Header_HPP
 #define Header_HPP
 
-double mid(int a, int b, int c);
+// b^2-4(a)(c)
+int mid(int a, int b, int c);
+
+
+//-b+(mid)^1/2 / 2(a)
+int f(int a, int b, int c);
 
 #endif // Header_HPP
