@@ -20,6 +20,9 @@ int main() {
 	int a;
 	int b;
 	int c;
+	int x1;
+	int x2;
+
 
 	// tells user the quadratic equation and what to enter
 	cout << "Quadratic equations are a * x^2 + b * x + c = 0" << endl;
@@ -30,6 +33,29 @@ int main() {
 	cin >> c;
 	cout << endl;
 
-	cout << mid(a, b, c) << endl;
+	// prints ax^2+bx+c
+	cout << "The space can be a + and the negitive can be the minues" << endl;
+	cout << a << "x^2 " << b << "x " << c << endl;
+
+	// sets x1 and x2 for it finds if one is neg so the print out makes since
+	x1 = f(a, b, c);
+	x2 = nf(a, b, c);
+	// prints (x + xo)(x - x1)
+	if (x1 > 0) {
+		cout << "(x - " << abs(x1) << ")";
+	}
+	else {
+		cout << "(x +" << abs(x1) << ")";
+	}if (x2 > 0) {
+		cout << "(x - " << abs(x2) << ")";
+	}
+	else {
+		cout << "(x + " << abs(x2) << ")";
+	}
+	cout << endl;
+
+	// prints (x-y)(x+a)
+	cout << "x = " << x1 << ", " << x2 << endl;
+
 	return 0;
 }
