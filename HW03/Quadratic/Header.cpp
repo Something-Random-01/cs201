@@ -31,9 +31,22 @@ int mid(int a, int b, int c) { // finds the b^2 -4ac
 int f(int a, int b, int c) {
 	double dsqur = sqrt(mid(a,b,c));
 	int isqur = sqrt(mid(a, b, c));
+	// see if it has real roots
 	if (dsqur - isqur != 0) {
 		cout << "No real roots" << endl;
 		exit(-1);
-	}
+	}// end of f
 	return (b * -1 + isqur) / 2 * a;
-}
+}// end of f
+
+
+int nf(int a, int b, int c) {
+	double dsqur = sqrt(mid(a, b, c));
+	int isqur = sqrt(mid(a, b, c));
+	// see if it has real roots
+	if (dsqur - isqur != 0) {
+		cout << "No real roots" << endl;
+		exit(-1);
+	}// end of if
+	return (b * -1 - isqur) / 2 * a;
+}// end of nf

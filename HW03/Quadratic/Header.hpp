@@ -20,4 +20,6 @@ int mid(int a, int b, int c);
 //-b+(mid)^1/2 / 2(a)
 int f(int a, int b, int c);
 
+int nf(int a, int b, int c);
+
 #endif // Header_HPP
