@@ -22,10 +22,10 @@ int main() {
 		if (k > 0) {
 			break;
 		}// end of if
-		if (!k || k != 0) {
+		if (!k || k != 0) {// not a numbner
 			cout << "Not a number: " << endl;
 			return -1;
-		}
+		}// end of if
 		cout << "ERROR: NOT A POSITIVE NUMBER" << endl;
 		cout << "Please enter a positive number: ";
 	}// end of while
