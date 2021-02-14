@@ -19,13 +19,13 @@ int main() {
 	cout << "Please enter a positive number: ";
 	while (true) {
 		cin >> k;
-		if (!k || k!= 0) {
-			cout << "you entered a letter or sometihng" << endl;
-			return -1;
-		}
 		if (k > 0) {
 			break;
 		}// end of if
+		if (!k || k != 0) {
+			cout << "Not a number: " << endl;
+			return -1;
+		}
 		cout << "ERROR: NOT A POSITIVE NUMBER" << endl;
 		cout << "Please enter a positive number: ";
 	}// end of while
