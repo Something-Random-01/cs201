@@ -6,11 +6,13 @@ This program will reproduce the C runtime libarary cintaines char*stock(char* st
 */
 
 #include "tokenizer.hpp"
+#include <iostream>
 #include <sstream>
 using std::istringstream;
 #include <string>
 
-bool ReadLine(const std::string& str) {
+bool ReadLine(std::string& str) {
+	std::getline(std::cin, str);
 	if (str == "") {
 		return false;
 	}
@@ -21,16 +23,20 @@ bool ReadLine(const std::string& str) {
 
 unsigned StringToTokenWS(const std::string& input, std::vector<std::string>& tokens) {
 	int size = 0;
+	std::string word;
+	istringstream ss(input);
+	while (ss >> word) {
+		tokens.push_back(word);
+	}
+	tokens.push_back("");
+	
+	
 
-	if (ReadLine(input)) {
-		for (auto word : input) {
-			tokens.push_back(input);
-			size++;
-		}
-		tokens.push_back("");
-	}
-	else {
-		tokens.push_back("");
-	}
 	return size;
+}
+
+void AnalyzeTokens(const std::vector<std::string>& tokens) {
+	for (auto word : tokens) {
+		std::cout << word << std::endl;
+	}
 }
