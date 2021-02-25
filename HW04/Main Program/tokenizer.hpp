@@ -10,6 +10,9 @@ This program will reproduce the C runtime libarary cintaines char*stock(char* st
 #ifndef tokenizer_HPP
 #define tokenizer_HPP
 #include <string>
+#include <vector>
+
 bool ReadLine(std::string& str);
+unsigned StringToTokenWS(const std::string& input, std::vector<std::string>& tokens);
 
 #endif // !tokerizer_HPP
