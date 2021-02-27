@@ -11,15 +11,19 @@ This program will reproduce the C runtime libarary cintaines char*stock(char* st
 using std::istringstream;
 #include <string>
 
+// gets a line and checks if its empty
 bool ReadLine(std::string& str) {
 	std::getline(std::cin, str);
 	return str == " ";
 }
 
+// takes the line of the string and puts it in a vector
 unsigned StringToTokenWS(const std::string& input, std::vector<std::string>& tokens) {
 	int size = 0;
 	std::string word;
 	istringstream ss(input);
+	// pushes the word of the string tell their is no more words
+	// in the input line.
 	while (ss >> word) {
 		tokens.push_back(word);
 		size++;
@@ -28,6 +32,8 @@ unsigned StringToTokenWS(const std::string& input, std::vector<std::string>& tok
 	return size;
 }
 
+
+// take the tokens and print the type of token
 void AnalyzeTokens(const std::vector<std::string>& tokens) {
 	int isnum;
 	// && word.at(word.size() -1 ) == char("\"")
