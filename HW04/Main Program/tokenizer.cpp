@@ -29,7 +29,21 @@ unsigned StringToTokenWS(const std::string& input, std::vector<std::string>& tok
 }
 
 void AnalyzeTokens(const std::vector<std::string>& tokens) {
+	int isnum;
+	// && word.at(word.size() -1 ) == char("\"")
 	for (auto word : tokens) {
-		std::cout << word << std::endl;
-	}
+		istringstream istream(word);
+		istream >> isnum;
+		if (word == "") {
+			std::cout << "[whitespace]\t"<< "\"" << word << "\"" << std::endl;
+		}else if (word.at(word.size()-1) == char('"') && word.at(0) == char('"')) {
+			std::cout << "[string]\t" << "\"\\\"" << word << "\\\"\"" << std::endl;
+		}
+		else if (isnum) {
+			std::cout << "[integer]\t" << "\"" << word << "\"" << std::endl;
+		}else {
+			std::cout << "[other]\t" << "\"" << word << "\"" << std::endl;
+		}// end of if else if else
+
+	}// end of for loop
 }
