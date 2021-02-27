@@ -13,12 +13,7 @@ using std::istringstream;
 
 bool ReadLine(std::string& str) {
 	std::getline(std::cin, str);
-	if (str == "") {
-		return false;
-	}
-	else {
-		return true;
-	}
+	return str == " ";
 }
 
 unsigned StringToTokenWS(const std::string& input, std::vector<std::string>& tokens) {
@@ -27,11 +22,9 @@ unsigned StringToTokenWS(const std::string& input, std::vector<std::string>& tok
 	istringstream ss(input);
 	while (ss >> word) {
 		tokens.push_back(word);
+		size++;
 	}
 	tokens.push_back("");
-	
-	
-
 	return size;
 }
 

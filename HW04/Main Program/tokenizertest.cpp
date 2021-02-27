@@ -16,18 +16,14 @@ int main() {
 	std::vector<std::string> token;
 	std::string line;
 	std::cout << "Please type in some text. When you are done, type \"end\", \" End\" or \"END\"" << std::endl;
-	ReadLine(line);
-	StringToTokenWS(line, token);
-	AnalyzeTokens(token);
-	
 
-	
-/*
 	while (true) {
 		ReadLine(line);
 		int si = StringToTokenWS(line, token);
+
 		for (int i = 0; i < token.size(); i++) {
 			if (token.at(i) == "end" || token.at(i) == "End" || token.at(i) == "END" || token.at(i) == "E") {
+				token.pop_back();
 				b = true;
 			}// end of if
 		}// end of for loop
@@ -35,7 +31,10 @@ int main() {
 			break;
 		}// end of if
 	}// end of while
-	*/
+
+
+	std::cout << std::endl;
+	AnalyzeTokens(token);
 
 return 0;
 }
