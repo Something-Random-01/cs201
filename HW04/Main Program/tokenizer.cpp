@@ -34,15 +34,25 @@ void AnalyzeTokens(const std::vector<std::string>& tokens) {
 	for (auto word : tokens) {
 		istringstream istream(word);
 		istream >> isnum;
-		if (word == "") {
+		if (word == "") {// prints the ""
 			std::cout << "[whitespace]\t"<< "\"" << word << "\"" << std::endl;
-		}else if (word.at(word.size()-1) == char('"') && word.at(0) == char('"')) {
+			// gets the string
+		}
+		else if (word.at(word.size()-1) == char('"') && word.at(0) == char('"')) {
+			// removes the front and back "
+			word.replace(0, 1, "");
+			word.replace(word.size() - 1, word.size(), "");
 			std::cout << "[string]\t" << "\"\\\"" << word << "\\\"\"" << std::endl;
 		}
-		else if (isnum) {
+		// gets the identifier
+		else if (word.at(0) >= char('A') && word.at(0) <= char('Z') || word.at(0) >= char('a') && word.at(0) <= char('z')) {
+			std::cout << "[identifier]\t" << "\"" << word << "\"" << std::endl;
+		} 
+		else if (isnum) {// gets the integer
 			std::cout << "[integer]\t" << "\"" << word << "\"" << std::endl;
-		}else {
-			std::cout << "[other]\t" << "\"" << word << "\"" << std::endl;
+		}
+		else { // gets the other
+			std::cout << "[other]\t\t" << "\"" << word << "\"" << std::endl;
 		}// end of if else if else
 
 	}// end of for loop
