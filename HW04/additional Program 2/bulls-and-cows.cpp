@@ -15,6 +15,7 @@ using std::vector;
 #include <stdlib.h>
 #include <time.h>
 #include <sstream>
+#include <string>
 using std::istringstream;
 
 // gets random number from 0 to 9
@@ -47,7 +48,7 @@ void arr(vector<int> &num) {
 // prints the vector.
 void negprint(vector<int> num) {
 	for (int i = 0; i < num.size(); i++) {
-		cout << num.at(i) << " ";
+		cout << num.at(i);
 	}
 	cout << endl;
 }
@@ -62,23 +63,35 @@ void usif(vector<int>& nums) {
 	cout << "Please type in four numbers with no space: ";
 	// set varibles
 	std::string number;
+	std::string word;
+	bool four = false;
 	int num;
 	int size = 0;
+
 	// get info needed
-	while (size != 4) {
-		std::cin >> number;
+	while (true) {
+		std::getline(std::cin, number);
+		istringstream ws(number);
+		ws >> word;
 		// gets only 4 letters or numbers
-		if (number.size() == 4) {
-			istringstream isnu(number);
-			// pushes ints to nums
-			while (isnu >> num) {
-				nums.push_back(num);
-				size = 4;
-			}// end of while
-		}// end of if
+		if (word.size() == 4) {
+			istringstream isnu(word);
+			if (isdigit(word.at(0)) && isdigit(word.at(1)) && isdigit(word.at(2)) && isdigit(word.at(3))) {
+				// pushes ints to nums
+				while (isnu >> num) {
+					nums.push_back(num);
+					size = 4;
+					four = true;
+				}// end of while
+			}// end of isdigit
+		}// end of if: word.size() == 4
 		// show message when size does not equale 4
 		if (size != 4) {
-			cout << "Type in 4 number between (0 to 9)" << endl;
+			cout << endl;
+			cout << "Type in 4 number between (0 to 9): " << endl;
+		}
+		if (four) {
+			break;
 		}
 
 	}// end of while true
@@ -90,11 +103,13 @@ int main() {
 	srand(time(0));
 	vector<int> rnum(4);
 	vector<int> usnum;
-	
+	// get random numbers
 	arr(rnum);
-	
+	// get user number
 	usif(usnum);
+
 	negprint(usnum);
+	negprint(rnum);
 
 	return 0;
 }
