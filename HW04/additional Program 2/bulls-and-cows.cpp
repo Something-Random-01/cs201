@@ -14,6 +14,8 @@ using std::endl;
 using std::vector;
 #include <stdlib.h>
 #include <time.h>
+#include <sstream>
+using std::istringstream;
 
 // gets random number from 0 to 9
 int numb() {
@@ -42,15 +44,57 @@ void arr(vector<int> &num) {
 	}
 }// end of arr
 
+// prints the vector.
+void negprint(vector<int> num) {
+	for (int i = 0; i < num.size(); i++) {
+		cout << num.at(i) << " ";
+	}
+	cout << endl;
+}
+
+
+// gets user numbers
+void usif(vector<int>& nums) {
+	// tells the user info
+	cout << "This is a game of cow and bulls" << endl;
+	cout << "The range per number is 0 to 9 with four numbers" << endl;
+	cout << "Example: 1248" << endl;
+	cout << "Please type in four numbers with no space: ";
+	// set varibles
+	std::string number;
+	int num;
+	int size = 0;
+	// get info needed
+	while (size != 4) {
+		std::cin >> number;
+		// gets only 4 letters or numbers
+		if (number.size() == 4) {
+			istringstream isnu(number);
+			// pushes ints to nums
+			while (isnu >> num) {
+				nums.push_back(num);
+				size = 4;
+			}// end of while
+		}// end of if
+		// show message when size does not equale 4
+		if (size != 4) {
+			cout << "Type in 4 number between (0 to 9)" << endl;
+		}
+
+	}// end of while true
+	cout << endl;
+}// end of usif
+
+
 int main() {
 	srand(time(0));
 	vector<int> rnum(4);
+	vector<int> usnum;
+	
 	arr(rnum);
-
-	for (int i = 0; i < 4; i++) {
-		cout << rnum.at(i) << " ";
-	}
-	cout << endl;
+	
+	usif(usnum);
+	negprint(usnum);
 
 	return 0;
 }
