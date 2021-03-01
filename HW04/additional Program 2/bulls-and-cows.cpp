@@ -47,69 +47,101 @@ void arr(vector<int> &num) {
 
 // prints the vector.
 void negprint(vector<int> num) {
-	for (int i = 0; i < num.size(); i++) {
-		cout << num.at(i);
-	}
-	cout << endl;
-}
-
+		for (int i = 0; i < num.size(); i++) {
+			cout << num.at(i) << " ";
+		}// end of for
+		cout << endl;
+}// end of print
+	
+// put user number as indivdual numbers
 
 // gets user numbers
-void usif(vector<int>& nums) {
-	// tells the user info
-	cout << "This is a game of cow and bulls" << endl;
-	cout << "The range per number is 0 to 9 with four numbers" << endl;
-	cout << "Example: 1248" << endl;
-	cout << "Please type in four numbers with no space: ";
+int usif(vector<int>& nums) {
 	// set varibles
 	std::string number;
 	std::string word;
 	bool four = false;
 	int num;
 	int size = 0;
+	std::string fword;
 
 	// get info needed
-	while (true) {
+	while (size != 4) {
+		size = 0;
 		std::getline(std::cin, number);
-		istringstream ws(number);
-		ws >> word;
-		// gets only 4 letters or numbers
-		if (word.size() == 4) {
-			istringstream isnu(word);
-			if (isdigit(word.at(0)) && isdigit(word.at(1)) && isdigit(word.at(2)) && isdigit(word.at(3))) {
-				// pushes ints to nums
-				while (isnu >> num) {
-					nums.push_back(num);
-					size = 4;
-					four = true;
-				}// end of while
-			}// end of isdigit
-		}// end of if: word.size() == 4
-		// show message when size does not equale 4
-		if (size != 4) {
+		// checks and gets the first four number and letter
+		//check to see if number is negative
+		if (number.size() >= 5) {
+			number = number.substr(0, 5);
+			istringstream ss(number);
+			ss >> num;
+			if (num < 0) {
+				return -1;
+			}// end of if
+		}// end of if
+		if (number.size() >= 4) {
+			number = number.substr(0, 4);
+			// adds the four numbers
+			for (int i = 0; i < 4; i++) {
+				if (isdigit(number.at(i))) {
+					// makes number at the postion
+					num = number.at(i) - 48;
+				}
+				else {
+					// if letter is enterd, turns to zero
+					num = 0;
+				}
+				// pushes back number
+				nums.push_back(num);
+			}// end of for loop
+			size = 4;
+			// end of if number.size() and prints error message if bigger or lower than 4
+		}else{
 			cout << endl;
 			cout << "Type in 4 number between (0 to 9): " << endl;
-		}
-		if (four) {
-			break;
 		}
 
 	}// end of while true
 	cout << endl;
+	return 0;
 }// end of usif
 
 
 int main() {
+	int cow = 0;
+	int bull = 0;
+
 	srand(time(0));
 	vector<int> rnum(4);
 	vector<int> usnum;
 	// get random numbers
 	arr(rnum);
 	// get user number
-	usif(usnum);
 
-	negprint(usnum);
-	negprint(rnum);
+	// tells the user info
+	cout << "This is a game of cow and bulls" << endl;
+	cout << "The range per number is 0 to 9 with four numbers" << endl;
+	cout << "Example: 1248" << endl;
+	cout << "Enter a negative number to get answer: ex -1234" << endl;
+	cout << "Please type in four numbers with no space: ";
+
+	while (true) {
+		int fan = usif(usnum);
+		if (fan == -1) {
+			cout << "Answer: " << endl;
+			negprint(rnum);
+			exit(-1);
+		}
+		else {
+			negprint(usnum);
+			// clear user numbers
+			usnum.clear();
+			
+		}
+
+
+	}
+	
 
 	return 0;
 }
