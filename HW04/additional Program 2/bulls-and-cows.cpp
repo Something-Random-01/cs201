@@ -106,7 +106,6 @@ int usif(vector<int>& nums) {
 	return 0;
 }// end of usif
 
-
 int main() {
 	int count = 0;
 	int cow = 0;
