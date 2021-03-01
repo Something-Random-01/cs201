@@ -56,5 +56,47 @@ void LifoPop(vector<string> contanier, string& item) {
 // main
 int main() {
 	string word;
-	vector<string> container;
+	vector<string> fi;
+	vector<string> fo;
+
+	// test with a b c d
+	FifoPush(fi, "A");
+	FifoPush(fi, "B");
+	FifoPush(fi, "C");
+	FifoPush(fi, "D");
+
+	// print Fifo
+	cout << "Print all of LiFo" << endl;
+	cout << "-------------------------------------"<< endl;
+	PrintContainer(fi);
+	cout << "Does LiFo" << endl;
+	cout << "-------------------------------------" << endl;
+	for (int i = 0; i < 4; i++) {
+		FifoPop(fi, word);
+		cout << word << endl;
+	}
+	cout << "Print all of Lifo" << endl;
+	cout << "-------------------------------------" << endl;
+	PrintContainer(fi);
+	cout << "Test LiFo" << endl;
+	// test LiFo
+	LifoPush(fo, "A");
+	LifoPush(fo, "B");
+	LifoPush(fo, "C");
+	LifoPush(fo, "D");
+
+
+	cout << "Print all of Lifo" << endl;
+	cout << "-------------------------------------" << endl;
+	PrintContainer(fo);
+	cout << "Does LiFoPop" << endl;
+	cout << "-------------------------------------" << endl;
+	for (int i = 0; i < 4; i++) {
+		LifoPop(fo, word);
+		cout << word << endl;
+	}
+	cout << "Print all of LiPo" << endl;
+	cout << "-------------------------------------" << endl;
+	PrintContainer(fo);
+
 }
