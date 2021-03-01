@@ -48,7 +48,7 @@ void arr(vector<int> &num) {
 // prints the vector.
 void negprint(vector<int> num) {
 		for (int i = 0; i < num.size(); i++) {
-			cout << num.at(i) << " ";
+			cout << num.at(i);
 		}// end of for
 		cout << endl;
 }// end of print
@@ -108,9 +108,9 @@ int usif(vector<int>& nums) {
 
 
 int main() {
+	int count = 0;
 	int cow = 0;
 	int bull = 0;
-
 	srand(time(0));
 	vector<int> rnum(4);
 	vector<int> usnum;
@@ -123,9 +123,14 @@ int main() {
 	cout << "The range per number is 0 to 9 with four numbers" << endl;
 	cout << "Example: 1248" << endl;
 	cout << "Enter a negative number to get answer: ex -1234" << endl;
-	cout << "Please type in four numbers with no space: ";
-
+	cout << "Please type in four numbers with no space: " << endl;
+	cout << endl;
+	
+	// plays the game tell user wins
 	while (true) {
+		bull = 0;
+		cow = 0;
+
 		int fan = usif(usnum);
 		if (fan == -1) {
 			cout << "Answer: " << endl;
@@ -133,14 +138,35 @@ int main() {
 			exit(-1);
 		}
 		else {
-			negprint(usnum);
 			// clear user numbers
+			// goes throw each spot looking for the same number
+			for (int i = 0; i < 4; i++) {
+				for (int j = 0; j < 4; j++) {
+					// checks the same spot
+					if (usnum.at(i) == rnum.at(i)) {
+						bull++;
+						break;
+					}else if (usnum.at(i) == rnum.at(j)){
+						cow++;
+						
+					}// end of if else
+				}// end of sec for loop
+			}// end of first for loop
+
+			// tells user how many bulls and cows
 			usnum.clear();
-			
-		}
-
-
-	}
+			// if it maches, it lets the user know they one
+			if (bull == 4) {
+				cout << "YOU WIN!!!!!!!!!!!!!!" << endl;
+				cout << "It took you " << count << " times." << endl;
+				break;
+			}
+			cout << bull << " bull and " << cow << " cow" << endl;
+			cout << endl;
+			cout << "Enter another Number: " << endl;
+			count++;
+		}// end of else
+	}// end of while
 	
 
 	return 0;
