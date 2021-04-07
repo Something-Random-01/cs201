@@ -16,15 +16,17 @@ and a normal distribution of random numbers using std::map<int,int> to simulate 
 #include <cmath>
 #include <stdlib.h>
 
+std::random_device rd;
+std::mt19937_64 gen(rd());
+
 int RandomBetweenU(int first, int last) {
-	std::random_device rd;
-	std::mt19937_64 gen(rd());
 	std::uniform_int_distribution<> distrib(first, last);
 	return distrib(gen);
 }
 
 int RandomBetweenN(int first, int last) {
-
+	std::normal_distribution<> distrib(first, last);
+	return distrib(gen);
 }
 int main()
 {
