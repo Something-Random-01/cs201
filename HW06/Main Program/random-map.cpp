@@ -28,6 +28,17 @@ int RandomBetweenN(int first, int last) {
 	std::normal_distribution<> distrib(first, last);
 	return distrib(gen);
 }
+
+int RandomBetween(int first, int last) {
+	std::srand(std::time(nullptr));
+	int random_variable = std::rand();
+	int x = last + 2;
+	while (x > last && x < first) {
+		x = 1 + rand() / ((RAND_MAX + 1u) / last);
+	}
+	return x;
+
+}
 int main()
 {
 	// Seed with a real random value, if available
