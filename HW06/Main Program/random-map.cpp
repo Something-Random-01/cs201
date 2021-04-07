@@ -4,6 +4,14 @@
 #include <map>
 #include <random>
 #include <cmath>
+
+int RandomBetweenU(int first, int last) {
+	std::random_device rd;
+	std::mt19937_64 gen(rd());
+	std::uniform_int_distribution<> distrib(first, last);
+	return distrib(gen);
+}
+
 int main()
 {
 	// Seed with a real random value, if available
