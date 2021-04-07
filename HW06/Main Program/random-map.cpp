@@ -1,9 +1,20 @@
+/*
+Ty Jacobs
+4/6/2021
+CS 201
+
+Uses the <random> header to test both a unifrom distribution of random numbers
+and a normal distribution of random numbers using std::map<int,int> to simulate a histogram
+
+*/
+
 #include <iostream>
 #include <iomanip>
 #include <string>
 #include <map>
 #include <random>
 #include <cmath>
+#include <stdlib.h>
 
 int RandomBetweenU(int first, int last) {
 	std::random_device rd;
@@ -12,6 +23,9 @@ int RandomBetweenU(int first, int last) {
 	return distrib(gen);
 }
 
+int RandomBetweenN(int first, int last) {
+
+}
 int main()
 {
 	// Seed with a real random value, if available
