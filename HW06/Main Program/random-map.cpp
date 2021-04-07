@@ -39,26 +39,71 @@ int RandomBetween(int first, int last) {
 	return x;
 
 }
-int main()
-{
-	// Seed with a real random value, if available
-	std::random_device r;
-	// Choose a random mean between 1 and 6
-	std::default_random_engine e1(r());
-	std::uniform_int_distribution<int> uniform_dist(1, 6);
-	int mean = uniform_dist(e1);
-	std::cout << "Randomly-chosen mean: " << mean << '\n';
-	// Generate a normal distribution around that mean
-	std::seed_seq seed2{ r(), r(), r(), r(), r(), r(), r(), r() };
-	std::mt19937 e2(seed2);
-	std::normal_distribution<> normal_dist(mean, 2);
-	std::map<int, int> hist;
-	for (int n = 0; n < 10000; ++n) {
-		++hist[std::round(normal_dist(e2))];
+
+void PrintDistribution(const std::map<int,int> &numbers) {
+	for (const auto&  i : numbers) {
+		std::cout << "Number: " << i.first << " Number of numbers: " << i.second << std::endl;
 	}
-	std::cout << "Normal distribution around " << mean << ":\n";
-	for (auto p : hist) {
-		std::cout << std::fixed << std::setprecision(1) << std::setw(2)
-			<< p.first << ' ' << std::string(p.second / 200, '*') << '\n';
+
+}
+
+int main() {
+	int x = 0;
+
+	std::map<int, int> numb;
+	for (int i = 0; i < 101; i++) {
+		x = RandomBetweenU(1, 6);
+		if (numb.empty()) {
+			numb[x] = 1;
+		}
+		else if (numb.count(x) != 0) {
+			numb[x] += 1;
+		}
+		else {
+			numb[x] = 1;
+		}
 	}
+	std::cout << "This is for uniform random number." << std::endl;
+	PrintDistribution(numb);
+	std::cout << std::endl;
+	std::cout << "---------------------------------------------------" << std::endl;
+
+	numb.clear();
+
+	for (int i = 0; i < 101; i++) {
+		x = RandomBetweenN(1, 6);
+		if (numb.empty()) {
+			numb[x] = 1;
+		}
+		else if (numb.count(x) != 0) {
+			numb[x] += 1;
+		}
+		else {
+			numb[x] = 1;
+		}
+	}
+	std::cout << "This is for normally distributted random number." << std::endl;
+	PrintDistribution(numb);
+	std::cout << std::endl;
+	std::cout << "---------------------------------------------------" << std::endl;
+
+	std::map<int, int> numb;
+	for (int i = 0; i < 101; i++) {
+		x = RandomBetweenU(1, 6);
+		if (numb.empty()) {
+			numb[x] = 1;
+		}
+		else if (numb.count(x) != 0) {
+			numb[x] += 1;
+		}
+		else {
+			numb[x] = 1;
+		}
+	}
+	std::cout << "This is for uniform random number." << std::endl;
+	PrintDistribution(numb);
+	std::cout << std::endl;
+	std::cout << "---------------------------------------------------" << std::endl;
+
+	return 0;
 }
