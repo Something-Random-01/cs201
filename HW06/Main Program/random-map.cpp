@@ -16,17 +16,20 @@ and a normal distribution of random numbers using std::map<int,int> to simulate 
 #include <cmath>
 #include <stdlib.h>
 
-std::random_device rd;
-std::mt19937_64 gen(rd());
+std::random_device r;
+std::mt19937_64 gen(r());
 
 int RandomBetweenU(int first, int last) {
-	std::uniform_int_distribution<> distrib(first, last);
-	return distrib(gen);
+	std::default_random_engine e1(r());
+	std::uniform_int_distribution<int> uniform_dist(1, 6);
+	return uniform_dist(e1);
 }
 
 int RandomBetweenN(int first, int last) {
-	std::normal_distribution<> distrib(first, last);
-	return distrib(gen);
+	std::seed_seq seed2{ r(), r(), r(), r(), r(), r(), r(), r() };
+	std::mt19937 e2(seed2);
+	std::normal_distribution<> normal_dist(first, last);
+	return normal_dist(e2);
 }
 
 int RandomBetween(int first, int last) {
@@ -34,7 +37,7 @@ int RandomBetween(int first, int last) {
 	int random_variable = std::rand();
 	int x = last + 2;
 	while (x > last && x < first) {
-		x = 1 + rand() / ((RAND_MAX + 1u) / last);
+		x = 1 + rand() % last;
 	}
 	return x;
 
@@ -48,10 +51,11 @@ void PrintDistribution(const std::map<int,int> &numbers) {
 }
 
 int main() {
+	int size = 100;
 	int x = 0;
 
 	std::map<int, int> numb;
-	for (int i = 0; i < 101; i++) {
+	for (int i = 0; i <= size; i++) {
 		x = RandomBetweenU(1, 6);
 		if (numb.empty()) {
 			numb[x] = 1;
@@ -70,7 +74,7 @@ int main() {
 
 	numb.clear();
 
-	for (int i = 0; i < 101; i++) {
+	for (int i = 0; i <= size; i++) {
 		x = RandomBetweenN(1, 6);
 		if (numb.empty()) {
 			numb[x] = 1;
@@ -87,9 +91,10 @@ int main() {
 	std::cout << std::endl;
 	std::cout << "---------------------------------------------------" << std::endl;
 
-	std::map<int, int> numb;
-	for (int i = 0; i < 101; i++) {
-		x = RandomBetweenU(1, 6);
+	numb.clear();
+
+	for (int i = 0; i <= size; i++) {
+		x = RandomBetween(1, 6);
 		if (numb.empty()) {
 			numb[x] = 1;
 		}
@@ -100,10 +105,10 @@ int main() {
 			numb[x] = 1;
 		}
 	}
-	std::cout << "This is for uniform random number." << std::endl;
+	std::cout << "This is for a random number using rand()." << std::endl;
 	PrintDistribution(numb);
 	std::cout << std::endl;
-	std::cout << "---------------------------------------------------" << std::endl;
+	numb.clear();
 
 	return 0;
 }
