@@ -21,7 +21,7 @@ using std::endl;
 #include <sstream>
 using std::istringstream;
 
-void toWords(string line, map<string, int> w) {
+void toWords(const string& line, map<string, int>& w) {
 	string word = "";
 
 	// does everything execpt for last word
