@@ -9,6 +9,7 @@ This program will open ppm and convert it to ascii.
 
 #include <fstream>
 using std::ifstream;
+using std::ofstream;
 #include <iostream>
 using std::string;
 using std::cout;
@@ -56,6 +57,12 @@ int main() {
 	int r, g, b, iy;
 	double y;
 	string values = "@@@###***+++--- ";
+
+	string outfile = "output.txt";
+	ofstream ofile;
+	ofile.open(outfile);
+	if (!ofile) cout << "File not found: " << outfile << endl;
+
 	for (int i = 0; i < xres * yres; i++) {
 		fin >> r >> g >> b;
 		if (!fin) {
@@ -71,9 +78,11 @@ int main() {
 		if (iy < 0 || iy > 255) cout << "Error!" << endl;
 		iy /= 16;
 		if (iy < 0 || iy > 15) cout << "Error!" << endl;
+		ofile << values.at(iy);
+		if (i % xres == xres - 1) ofile << endl;
 
 	}
-
-
+	ofile.close();
+	cout << "Finished program" << endl;
 	return 0;
 }
