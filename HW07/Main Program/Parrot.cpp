@@ -60,7 +60,13 @@ int main() {
 		fin >> r >> g >> b;
 		if (!fin) {
 			cout << "Error reading stream" << endl;
+			exit(4);
 		}
+		// Y =  0.2126R + 0.7152G + 0.0722B (from HW7)
+		y = 0.2126*r + 0.7152*g + 0.0722*b;
+		// tests
+
+
 	}
 
 
