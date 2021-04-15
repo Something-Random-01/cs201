@@ -65,7 +65,12 @@ int main() {
 		// Y =  0.2126R + 0.7152G + 0.0722B (from HW7)
 		y = 0.2126*r + 0.7152*g + 0.0722*b;
 		// tests
-
+		if (y < 0.0 || y >= 256.0) cout << "Error!" << endl;
+		iy = (int)y;
+		// should be [0....255]
+		if (iy < 0 || iy > 255) cout << "Error!" << endl;
+		iy /= 16;
+		if (iy < 0 || iy > 15) cout << "Error!" << endl;
 
 	}
 
