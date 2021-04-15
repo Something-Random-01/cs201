@@ -15,6 +15,16 @@ using std::cout;
 using std::endl;
 
 int main() {
+	
+	cout << "Convert ppm to ascii art" << endl;
+
+	string infile = "parrot.ppm";
+	ifstream fin(infile);
+	if (!fin) {
+		cout << "File: " << infile << " Not found" << endl;
+		exit(1);
+	}
+	cout << "Opened " << infile << endl;
 
 	return 0;
 }
