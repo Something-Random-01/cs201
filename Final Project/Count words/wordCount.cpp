@@ -11,6 +11,7 @@ secondary file for the out put.
 
 #include <string>
 using std::string;
+using std::tolower;
 #include <fstream>
 using std::ifstream;
 #include <map>
@@ -20,6 +21,26 @@ using std::cout;
 using std::endl;
 #include <sstream>
 using std::istringstream;
+#include <algorithm>
+#include <iomanip>
+using std::setw;
+
+void lower(string &word) {
+	// makes it only that letters are going throw.
+	string back = "";
+	for (auto c : word) {
+		if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z') {
+			back += c;
+		}
+	}
+	word = back;
+	// makes it that the word is lower case
+	for (auto &c : word) {
+		if (c <= 'Z' && c >= 'A') {
+			c -= ('Z' - 'z');
+		}
+	}
+}
 
 void toWords(const string& line, map<string, int>& w) {
 	string word = "";
@@ -28,26 +49,35 @@ void toWords(const string& line, map<string, int>& w) {
 	for (char a : line) {
 		if (a != ' ') {
 			word += a;
-		}
-		else {
-			cout << word << endl;
+		}else {
+			// makes it only letters
+			lower(word);
+			if (w.empty()) {
+				w[word] = 1;
+			}// checks to see if their is a word if not it adds one.
+			else if (w.count(word) > 0) {
+				w[word] += 1;
+			}else {
+				w[word] = 1;
+			}// retests the word
 			word = "";
 		}
 	}
 
 	// double checks end of line to make check if theres a space or no
-	
-	//if (word.size() != 0) {
-	//
-	//}
-	bool lastW = true;
 	for (char a : word) {
 		if (a == ' ') {
-			lastW == false;
+			word = "";
 		}
 	}
-	if (lastW) cout << word << endl;
-
+	// turns last word to lower case if their is one
+	lower(word);
+	if (!word.empty() && w.count(word) > 0) {
+		w[word] += 1;
+	}// chesks if it is not empty and word is not their.
+	else if (!word.empty()){
+		w[word] = 1;
+	}
 }
 
 int main() {
@@ -63,12 +93,12 @@ int main() {
 
 	map<string, int> word;
 	string line;
-	while (getline(file,line)) {
-		cout << line << endl;
-		cout << endl;
-
+	while (getline(file, line)) {
 		toWords(line, word);
-	
 	}
 
+	cout << "Word\t" << "How many" << endl;
+	for (auto p : word) {
+		cout << setw(9) << p.first << ": " << p.second << endl;
+	}
 }
