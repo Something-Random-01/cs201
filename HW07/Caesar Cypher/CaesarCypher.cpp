@@ -97,23 +97,26 @@ int getNum() {
 	}
 	return num;
 }
+
+void output(string &line, int& shift) {
+	shift = shift % 26;
+	for (auto& l : line) {
+		charLower(l, shift);
+		charUpper(l, shift);
+	}
+}
+
 int main() {
-	
 	string line;
 	cout << "This will use a Caesar Cypher to move letters in a line by some numbers." << endl;
 	cout << endl;
+
 	cout << "Enter a line to use the Caesar Cypher on: " << endl;
 	std::getline(cin, line);
 	cout << "Please enter a number to shift the line." << endl;
 	int shift = getNum();
-
-	// has errors if more than 26 and negative numbers
-	shift = shift % 26;
-	for (auto &l : line) {
-		charLower(l, shift);
-		charUpper(l, shift);
-	}
-
+	
+	output(line, shift);
 	cout << line << endl;
 	return 0;
 }
