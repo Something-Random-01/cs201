@@ -31,7 +31,6 @@ void charLower(char& letter, int shift) {
 		} 
 	}else {// end of shift >= 0
 		if (letter >= 'a' && letter <= 'z') {
-			overSize = 1;
 			if (letter + shift < 'a') {
 				while (letter != 'a') {
 					overSize++;
@@ -49,24 +48,42 @@ void charLower(char& letter, int shift) {
 
 void charUpper(char& letter, int shift) {
 	int overSize = 1;
-	if (letter >= 'A' && letter <= 'Z') {
-		if (letter + shift > 'Z') {
-			while (letter != 'Z') {
-				overSize++;
-				letter += 1;
+	if (shift >= 0) {
+		if (letter >= 'A' && letter <= 'Z') {
+			if (letter + shift > 'Z') {
+				while (letter != 'Z') {
+					overSize++;
+					letter += 1;
+				}
+				letter = 'A' + shift - overSize;
 			}
-			letter = 'A' + shift - overSize;
-		}
-		else {
-			letter += shift;
-		}
+			else {
+				letter += shift;
+			}
+		}// end of checking to see if its a letter
 	}
+	else {
+		if (letter >= 'A' && letter <= 'Z') {
+			overSize = 1;
+			if (letter + shift < 'A') {
+				while (letter != 'A') {
+					overSize++;
+					letter -= 1;
+				}
+				letter = 'Z' + shift + overSize;
+			}
+			else {
+				letter += shift;
+			}
+		}
 
+	}
 }
 
+
 int main() {
-	int shift = -27;
-	string line = "a";
+	int shift = -3;
+	string line = "A";
 
 	cout << "This will use a Caesar Cypher to move letters in a line by any number." << endl;
 
