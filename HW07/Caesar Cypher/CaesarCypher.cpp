@@ -16,17 +16,34 @@ using std::endl;
 // function to move lowercase letter
 void charLower(char& letter, int shift) {
 	int overSize = 1;
-	if (letter >= 'a' && letter <= 'z') {
-		if (letter + shift > 'z') {
-			while (letter != 'z') {
-				overSize++;
-				letter += 1;
+	if (shift >= 0) {
+		if (letter >= 'a' && letter <= 'z') {
+			if (letter + shift > 'z') {
+				while (letter != 'z') {
+					overSize++;
+					letter += 1;
+				}
+				letter = 'a' + shift - overSize;
 			}
-			letter = 'a' + shift - overSize;
+			else {
+				letter += shift;
+			}
+		} 
+	}else {// end of shift >= 0
+		if (letter >= 'a' && letter <= 'z') {
+			overSize = 1;
+			if (letter + shift < 'a') {
+				while (letter != 'a') {
+					overSize++;
+					letter -= 1;
+				}
+				letter = 'z' + shift + overSize;
+			}
+			else {
+				letter += shift;
+			}
 		}
-		else {
-			letter += shift;
-		}
+
 	}
 }
 
@@ -48,8 +65,8 @@ void charUpper(char& letter, int shift) {
 }
 
 int main() {
-	int shift = 3;
-	string line = "abcd";
+	int shift = -27;
+	string line = "a";
 
 	cout << "This will use a Caesar Cypher to move letters in a line by any number." << endl;
 
