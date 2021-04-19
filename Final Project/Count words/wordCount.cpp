@@ -113,9 +113,10 @@ int main() {
 	while (getline(file, line)) {
 		toWords(line, word);
 	}
-
-	cout << "Word\t" << "How many" << endl;
+	int si = size(word); // size of the biggest word
+	int w = si + char('\t');
+	cout << "Word" << setw(w) << "How many" << endl;
 	for (auto p : word) {
-		cout << setw(size(word) + 1) << p.first << ": " << p.second << endl;
+		cout << setw(si) << p.first << ": " << setw(w - 5) << p.second << endl;
 	}
 }
