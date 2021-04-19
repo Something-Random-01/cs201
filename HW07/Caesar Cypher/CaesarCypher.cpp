@@ -49,20 +49,17 @@ void charUpper(char& letter, int shift) {
 
 int main() {
 	int shift = 3;
-	string line = "hello, everyone!";
-	string lineU = "Hello, everyone!";
+	string line = "abcd";
 
-	// has errors if more than 27 and negative numbers
-	// does lower case
+	cout << "This will use a Caesar Cypher to move letters in a line by any number." << endl;
+
+	// has errors if more than 26 and negative numbers
+	shift = shift % 26;
 	for (auto &l : line) {
 		charLower(l, shift);
-	}
-	for (auto& l : lineU) {
 		charUpper(l, shift);
-		charLower(l, shift);
 	}
-	cout << line << endl;
-	cout << lineU << endl;
 
+	cout << line << endl;
 	return 0;
 }
