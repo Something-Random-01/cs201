@@ -80,6 +80,23 @@ void toWords(const string& line, map<string, int>& w) {
 	}
 }
 
+int size(map<string, int> &m) {
+	bool siz = true;
+	int loca;
+
+	for (auto w : m) {
+		if (siz) {
+			siz = false;
+			loca = w.first.size();
+		}
+		if (w.first.size() > loca) {
+			loca = w.first.size();
+		}
+	}
+
+	return loca;
+}
+
 int main() {
 	cout << "This will count the words from a file and output the results to a diffrent file." << endl;
 
@@ -99,6 +116,6 @@ int main() {
 
 	cout << "Word\t" << "How many" << endl;
 	for (auto p : word) {
-		cout << setw(9) << p.first << ": " << p.second << endl;
+		cout << setw(size(word) + 1) << p.first << ": " << p.second << endl;
 	}
 }
