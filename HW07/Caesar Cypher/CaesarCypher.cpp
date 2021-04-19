@@ -12,23 +12,36 @@ using std::string;
 using std::cout;
 using std::endl;
 
+int leftLower(char letter) {
+	int siz = 1;
+	while (letter != 'z') {
+		siz++;
+		letter += 1;
+	}
+	return siz;
+}
+
+// function to move lowercase letter
+void charLower(char& letter, int shift) {
+	int overSize = 0;
+	if (letter >= 'a' && letter <= 'z') {
+		if (letter + shift > 'z') {
+			letter = 'a' + shift - leftLower(letter);
+		}
+		else {
+			letter += shift;
+		}
+	}
+}
+
 int main() {
 	int shift = 3;
-	string line = "z";
-	int overSize = 0;
+	string line = "hello, everyone!";
 
+	// has errors if more than 27 and negative numbers
+	// does lower case
 	for (auto &l : line) {
-		if (l >= 'a' && l <= 'z' || l >= 'A' && l <= 'Z') {
-			if (l + shift > 'z') {
-				overSize = 'z' - l + shift -1;
-				cout << overSize << " ";
-				l = 'a' + overSize;
-				cout << l << endl;
-			}
-			else {
-				l += shift;
-			}
-	}
+		charLower(l, shift);
 	}
 	cout << line << endl;
 
