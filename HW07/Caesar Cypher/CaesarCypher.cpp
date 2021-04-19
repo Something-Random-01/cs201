@@ -11,6 +11,9 @@ using std::string;
 #include <iostream>
 using std::cout;
 using std::endl;
+using std::cin;
+#include <sstream>
+using std::stringstream;
 
 
 // function to move lowercase letter
@@ -80,12 +83,29 @@ void charUpper(char& letter, int shift) {
 	}
 }
 
-
+int getNum() {
+	int num;
+	string word;
+	cin >> word;
+	stringstream ss(word);
+	ss >> num;
+	while (!ss) {
+		cout << "Please enter a vaild number: " << word << " is not vaild"<< endl;
+		std::getline(cin, word);
+		stringstream ss(word);
+		ss >> num;
+	}
+	return num;
+}
 int main() {
-	int shift = -3;
-	string line = "A";
-
-	cout << "This will use a Caesar Cypher to move letters in a line by any number." << endl;
+	
+	string line;
+	cout << "This will use a Caesar Cypher to move letters in a line by some numbers." << endl;
+	cout << endl;
+	cout << "Enter a line to use the Caesar Cypher on: " << endl;
+	std::getline(cin, line);
+	cout << "Please enter a number to shift the line." << endl;
+	int shift = getNum();
 
 	// has errors if more than 26 and negative numbers
 	shift = shift % 26;
