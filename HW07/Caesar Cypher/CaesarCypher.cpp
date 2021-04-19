@@ -12,21 +12,17 @@ using std::string;
 using std::cout;
 using std::endl;
 
-int leftLower(char letter) {
-	int siz = 1;
-	while (letter != 'z') {
-		siz++;
-		letter += 1;
-	}
-	return siz;
-}
 
 // function to move lowercase letter
 void charLower(char& letter, int shift) {
-	int overSize = 0;
+	int overSize = 1;
 	if (letter >= 'a' && letter <= 'z') {
 		if (letter + shift > 'z') {
-			letter = 'a' + shift - leftLower(letter);
+			while (letter != 'z') {
+				overSize++;
+				letter += 1;
+			}
+			letter = 'a' + shift - overSize;
 		}
 		else {
 			letter += shift;
